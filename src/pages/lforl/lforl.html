@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>L4L</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row align-items-center>
+      <ion-col col-7>{{prev.name}}</ion-col>
+      <ion-col col-5 *ngIf="prev.active">
+        <ion-input focusMe [(ngModel)]="prev.value" (ionBlur)="fieldOnBlur('prev')" type="tel"></ion-input>
+      </ion-col>
+      <ion-col text-right col-5 *ngIf="!prev.active" (click)="prev.active = true">
+        <span>{{prev.value | number: '1.2-2'}}<span *ngIf="prev.value"> грн.</span></span>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col col-7>{{current.name}}</ion-col>
+      <ion-col col-5 *ngIf="current.active">
+        <ion-input focusMe [(ngModel)]="current.value" (ionBlur)="fieldOnBlur('current')" type="tel"></ion-input>
+      </ion-col>
+      <ion-col text-right col-5 *ngIf="!current.active" (click)="current.active = true">
+        <span>{{current.value | number: '1.2-2'}}<span *ngIf="current.value"> грн.</span></span>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col col-7>{{delta.name}}</ion-col>
+      <ion-col col-5 *ngIf="delta.active">
+        <ion-input focusMe [(ngModel)]="delta.value" (ionBlur)="fieldOnBlur('delta')" type="tel"></ion-input>
+      </ion-col>
+      <ion-col text-right col-5 *ngIf="!delta.active" (click)="delta.active = true">
+        <span>{{delta.value | number: '1.2-2'}}<span *ngIf="delta.value"> %</span></span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
